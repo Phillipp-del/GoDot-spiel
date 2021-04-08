@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/import/schraubeGLTF.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/PickableItem.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.162599
+height = 0.322281
+
+[node name="Screw" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.76926, 0 )
+mass = 0.8
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375829, 0 )
+shape = SubResource( 1 )
+
+[node name="schraubeGLTF" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )

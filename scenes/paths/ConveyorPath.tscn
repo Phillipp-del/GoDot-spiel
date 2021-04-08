@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/ConveyorSpawner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/import/foerderband_endstueckGLTF.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/import/foerderband_mittelstueckGLTF.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 9, 3.40985, 13.4737, 0, 0, 0, 0, 0, 0, 9, 3.33167, 3.64829, 0, 0, 0, 0, 0, 0, 9, 3.35773, -0.547723, 0, 0, 0, 0, 0, 0, 9, 3.43592, -10.3471 ),
+"tilts": PoolRealArray( 0, 0, 0, 0 )
+}
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 11.2424 )
+
+[node name="ConveyorPath" type="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385915, -0.474002 )
+curve = SubResource( 1 )
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ConveyorMeshContainer" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10151, -2.18542, -8.4504 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="ConveyorMeshContainer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55614, 11.6168 )
+shape = SubResource( 2 )
+
+[node name="foerderband_endstueckGLTF" parent="ConveyorMeshContainer" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 1 )
+
+[node name="foerderband_endstueckGLTF2" parent="ConveyorMeshContainer" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.53674e-07, 4.65108, 23 )
+
+[node name="foerderband_mittelstueckGLTF" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 3 )
+
+[node name="foerderband_mittelstueckGLTF2" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 5 )
+
+[node name="foerderband_mittelstueckGLTF3" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 7 )
+
+[node name="foerderband_mittelstueckGLTF4" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 9 )
+
+[node name="foerderband_mittelstueckGLTF5" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 11 )
+
+[node name="foerderband_mittelstueckGLTF6" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 13 )
+
+[node name="foerderband_mittelstueckGLTF7" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 15 )
+
+[node name="foerderband_mittelstueckGLTF8" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 17 )
+
+[node name="foerderband_mittelstueckGLTF9" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 19 )
+
+[node name="foerderband_mittelstueckGLTF10" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 21 )
+
+[node name="ConveyorSpawner" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58561, 3.73385, 14.2427 )
+script = ExtResource( 1 )
+
+[node name="ConveyorContainer" type="Node" parent="."]
+[connection signal="timeout" from="MoveTimer" to="ConveyorSpawner" method="_on_MoveTimer_timeout"]

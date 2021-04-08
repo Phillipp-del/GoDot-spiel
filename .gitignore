@@ -1,0 +1,21 @@
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+*.import
+bin/
+*.dll
+*.gdns
+*.gdnlib
+android/
+
+# emacs ...
+*.*~
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# lb specific
+.Exports/
